@@ -32,7 +32,7 @@ multiqc -o multiqc fastqc
 <img src="Images/до2.png" width="800"/>
 <img src="Images/до3.png" width="800"/>
 
-### С помощью программ platanus_trim и platanus_internal_trim подрезать чтения по качеству и удалить праймеры
+### С помощью программ platanus_trim и platanus_internal_trim подрезаем чтения по качеству
 
 platanus_trim R1_paired_end.fastq R2_paired_end.fastq 
 
@@ -42,9 +42,7 @@ platanus_internal_trim R1_mate_pairs.fastq R2_mate_pairs.fastq
 
 mkdir trimmed_fastqc 
 
-ls *trimmed | xargs -P 4 -tI{} 
-
-fastqc -o trimmed_fastqc {} 
+ls *trimmed | xargs -P 4 -tI{} fastqc -o trimmed_fastqc {} 
 
 mkdir trimmed_multiqc 
 
