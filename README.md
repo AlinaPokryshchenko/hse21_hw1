@@ -28,9 +28,9 @@ mkdir multiqc
 multiqc -o multiqc fastqc
 
 ### Общая статистика для исходных чтений
-<img src="Desktop/до1.png" width="800"/>
-<img src="Desktop/до2.png" width="800"/>
-<img src="Desktop/до3.png" width="800"/>
+<img src="Images/до1.png" width="800"/>
+<img src="Images/до2.png" width="800"/>
+<img src="Images/до3.png" width="800"/>
 
 ### С помощью программ platanus_trim и platanus_internal_trim подрезать чтения по качеству и удалить праймеры
 
@@ -61,9 +61,9 @@ rm R1_mate_pairs.fastq
 rm R2_mate_pairs.fastq
 
 ### Общая статистика для подрезанных чтений
-<img src="Desktop/после1.png" width="800"/>
-<img src="Desktop/после2.png" width="800"/>
-<img src="Desktop/после3.png" width="800"/>
+<img src="Images/после1.png" width="800"/>
+<img src="Images/после2.png" width="800"/>
+<img src="Images/после3.png" width="800"/>
 
 ### Сравнив результаты для исходных и подрезанных чтений, можно сделать следующие выводы:
 
@@ -155,3 +155,9 @@ for line in scaffold:
     if int(line.split('_')[1][3:]) == 3831215:
         print(line)
         break
+
+### Записываем в файл
+
+echo scaffold1_len3831756_cov232 > max_scaffold.txt
+
+seqtk subseq Poil_scaffold.fa max_scaffold.txt > max_scaffold.fa
