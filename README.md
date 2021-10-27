@@ -77,49 +77,7 @@ time platanus assemble -o Poil -t 2 -m 28 -f R1_paired_end.fastq.trimmed R2_pair
 
 time platanus scaffold -o Poil -t 2 -c Poil_contig.fa -IP1 R1_paired_end.fastq.trimmed R2_paired_end.fastq.trimmed -OP2 R1_mate_pairs.fastq.int_trimmed R2_mate_pairs.fastq.int_trimmed 2> scaffold.log
 
-### Код для анализа контигов
-
-import numpy as np
-def analysis_c(contig):
-    counter = 0
-    length = 0
-    array = []
-    for row in contig:
-        if row[0] == '>':
-            counter += 1
-            length += int(row.split('_')[1][3:])
-            array.append(int(row.split('_')[1][3:]))
-    array = np.asarray(array)
-    array = np.sort(array)[::-1]
-    value = np.sum(array) / 2
-    n50 = array[np.cumsum(array) >= value][0]
-    
-    print('Общее количество контигов: ', counter)
-    print('Суммарная длина контигов: ', length)
-    print('Длина самого длинного контига: ', max(array))
-    print('N50: ', n50)
-   
-### Код для анализа скаффолдов
-
-import numpy as np
-def analysis_s(scaffold):
-    counter = 0
-    length = 0
-    array = []
-    for row in scaffold:
-        if row[0] == '>':
-            counter += 1
-            length += int(row.split('_')[1][3:])
-            array.append(int(row.split('_')[1][3:]))
-    array = np.asarray(array)
-    array = np.sort(array)[::-1]
-    value = np.sum(array) / 2
-    n50 = array[np.cumsum(array) >= value][0]
-    
-    print('Общее количество скаффолдов: ', counter)
-    print('Суммарная длина скаффолдов: ', length)
-    print('Длина самого длинного скаффолда: ', max(array))
-    print('N50: ', n50)
+### Код для анализа контигов в src
     
 ### Анализ контигов
 
