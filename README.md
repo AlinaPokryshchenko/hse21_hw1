@@ -19,7 +19,7 @@ seqtk sample -s1024 oilMP_S4_L001_R2_001.fastq 1500000 > R2_mate_pairs.fastq
 
 ### Оцениваем качество исходных чтений с помощью программ fastQC и multiQC, получаем общие данные
 
-mkdir fastq
+mkdir fastqc
 
 ls *.fastq | xargs -P 4 -tI{} fastqc -o fastqc {}
 
